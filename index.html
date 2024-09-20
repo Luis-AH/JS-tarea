@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Simulador de recompensas</title>
+    <meta name="author" content="Bethany's Pie Shop" />
+    <meta name="description" content="Store front for Bethany's Pie Shop" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="images\logo.png" />
+    <link rel="stylesheet" type="text/css" href="css\simulador.css" />
+    <link rel="stylesheet" type="text/css" href="../css/grid.css" />
+    <script type="text/javascript">
+      function calc() {
+        var misiones = parseFloat(document.getElementById("misiones").value);
+        var enemigos = parseFloat(document.getElementById("enemigos").value);
+        var recompensa = document.getElementById("recompensa").value;
+        console.log(
+          "misiones: " +
+            misiones +
+            ", enemigos: " +
+            enemigos +
+            ", recompensa: " +
+            recompensa
+        );
+        var reMisiones = 0;
+        var reEnemigos = 0;
+        switch (recompensa) {
+          case "O":
+            reMisiones = misiones * 100;
+            reEnemigos = enemigos * 10;
+            total = reMisiones + reEnemigos;
+
+            break;
+          case "G":
+            reMisiones = misiones * 5;
+            reEnemigos = enemigos;
+            total = reMisiones + reEnemigos;
+            break;
+          case "E":
+            reMisiones = misiones * 500;
+            reEnemigos = enemigos * 100;
+            total = reMisiones + reEnemigos;
+            break;
+          default:
+            break;
+        }
+        document.getElementById("mision").innerHTML =
+          "cantidad por misiones completadas: " + reMisiones;
+        document.getElementById("enemigo").innerHTML =
+          "cantidad por enemigos derrotados: " + reEnemigos;
+        document.getElementById("total").innerHTML =
+          "total de recompensa: " + total;
+      }
+    </script>
+  </head>
+  <body>
+    <header id="mainheader">
+      <img src="images\logo.png" height="70" alt="Logo simulador" />
+      <h1>SIMULADOR DE RECOMPENSAS</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="#">Calc</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section class="content-section">
+        <h2>Simulador de recompensas</h2>
+        <p>Calcula tus recompensas:</p>
+        <form class="contact-form">
+          <label for="misiones">Misiones completadas</label>
+          <input type="text" id="misiones" placeholder="número de misiones" />
+          <label for="enemigos">enemigos derrotados:</label>
+          <input
+            type="text"
+            id="enemigos"
+            placeholder="número de enemigos derrotados"
+          />
+          <label for="recompensa">tipo de recompensa:</label>
+          <select id="recompensa" class="seleccion">
+            <option value="O">Monedas de oro</option>
+            <option value="G">Gemas</option>
+            <option value="E">Puntos de experiencia</option>
+          </select>
+          <input type="button" class="button" value="Calc" onclick="calc();" />
+          <label id="mision"></label>
+          <label id="enemigo"></label>
+          <label id="total"></label>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <small>&copy; Simulador de Recompensas - All rights reserved</small>
+    </footer>
+  </body>
+</html>
